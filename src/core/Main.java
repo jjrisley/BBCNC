@@ -23,8 +23,10 @@ public class Main {
 		System.out.println("Blinking the LED now...");
 		for (int z = 0; z < 100; z++) {
 		
+			System.out.println("LED is HIGH.");
 			output.high();
 			BulldogUtil.sleepMs(1000);
+			System.out.println("LED is LOW");
 			output.low();
 		
 		} // end for 
