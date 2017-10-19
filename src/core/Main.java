@@ -21,7 +21,7 @@ public class Main {
 		DigitalOutput output = board.getPin(BBBNames.P8_25).as(DigitalOutput.class);
 		
 		System.out.println("Blinking the LED now...");
-		for (int z = 0; z > 100; z++) {
+		for (int z = 0; z < 100; z++) {
 		
 			output.high();
 			BulldogUtil.sleepMs(1000);
