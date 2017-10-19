@@ -16,8 +16,10 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		System.out.println("Creating board...");
 		Board board = Platform.createBoard();
 		
+		System.out.println("Getting Pin...");
 		DigitalOutput output = board.getPin(BBBNames.P8_25).as(DigitalOutput.class);
 		
 		System.out.println("Blinking the LED now...");
