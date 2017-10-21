@@ -20,7 +20,7 @@ public class Main {
 		Board board = Platform.createBoard();
 		
 		System.out.println("Getting Pin...");
-		DigitalOutput output = board.getPin(BBBNames.P8_25).as(DigitalOutput.class);
+		DigitalOutput output = board.getPin(BBBNames.P8_12).as(DigitalOutput.class);
 		
 		System.out.println("Blinking the LED now...");
 		for (int z = 0; z < 100; z++) {
