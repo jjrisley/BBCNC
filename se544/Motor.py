@@ -1,5 +1,5 @@
 # Imports
-import RPi.GPIO as io
+import Adafruit_BBIO.PWM as pwm
 import time
 
 class Motor:
@@ -8,20 +8,24 @@ class Motor:
 	# Global Class Variables
 	#
 	__freq = 50 # Hz
+	__minDuty = 0.0
+	__maxDuty = 0.0
+	__dutySpan = 0.0
 	ESC_NEUTRAL = 7.5
 	SERVO_NEUTRAL = 7
 
 	#
 	# Constructor
 	#
-	def __init__(self, pin, hasESC):
+	def __init__(self, pin, minDuty, maxDuty, hasESC):
 
 		self.__pin = pin
+		self.__minDuty = minDuty
+		self.__maxDuty = maxDuty
+		self.__dutySpan = maxDuty - minDuty
 		
-		io.setup(self.__pin, io.OUT)
-		self.__pwm = io.PWM(self.__pin, self.__freq)
-		self.__pwm.start(self.__freq)
-		self.__pwm.ChangeFrequency(self.__freq)
+		pwm.start(self.__pin, (100 - minDuty), 50)
+		
 
 		if (hasESC):
 
@@ -45,12 +49,18 @@ class Motor:
 
 		"""Sets the motor to the specified duty cycle."""
 
-		self.__pwm.ChangeDutyCycle(dutyCycle)
+		pwm.set_duty_cycle(self.__pin, dutyCycle)
 
 	# end set
+
+	def getDutySpan():
+		return self.__dutySpan
+
+	def getDutyMin():
+		return self.__dutyMin
 
 	def eStop(self):
 		
 		"""Immediately shuts off the motor."""
 
-		self.__pwm.stop()
+		print("Not defined lol")

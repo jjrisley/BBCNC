@@ -1,0 +1,466 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0xa9dcdf54, pid=1900, tid=0xb637d470
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_144-b01) (build 1.8.0_144-b01)
+# Java VM: Java HotSpot(TM) Client VM (25.144-b01 mixed mode linux-arm )
+# Problematic frame:
+# C  [bulldog-linux-native6860580183073049311.so+0x4f54]  BBBIO_sys_Enable_GPIO+0x58
+#
+# Core dump written. Default location: /home/debian/source/BBCNC/target/core or core.1900
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0xb62068c0):  JavaThread "main" [_thread_in_native, id=1901, stack(0xb632e000,0xb637e000)]
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x00000008
+
+Registers:
+  r0  = 0x00000001
+  r1  = 0xa9de1090
+  r2  = 0x00000000
+  r3  = 0xa9de1238
+  r4  = 0xb417ec40
+  r5  = 0xa9dcfa94
+  r6  = 0x00000000
+  r7  = 0x00000000
+  r8  = 0xb637c674
+  r9  = 0xac43e410
+  r10 = 0xb62068c0
+  fp  = 0xb637c66c
+  r12 = 0xa9dcdefc
+  sp  = 0xb637c5f0
+  lr  = 0xa9dcfaa0
+  pc  = 0xa9dcdf54
+  cpsr = 0x800f0010
+
+Top of Stack: (sp=0xb637c5f0)
+0xb637c5f0:   b417ec40 b414e6f8 b62068c0 b637c628
+0xb637c600:   b620705c b62068c0 b637c628 b637c620
+0xb637c610:   b637c644 b6695260 002068c0 b62068c0
+0xb637c620:   ac43e410 b62068c0 ac43e410 b62068c0
+0xb637c630:   ac43e410 00000000 00000000 00000000
+0xb637c640:   b637c66c b414e610 b41461c0 b637c64c
+0xb637c650:   00000000 b637c674 ac43ea78 00000000
+0xb637c660:   ac43e410 00000000 b637c678 b637c698 
+
+Instructions: (pc=0xa9dcdf54)
+0xa9dcdf34:   e3500003 0a00000f e3500001 0a000012
+0xa9dcdf44:   e59f3070 e3a00001 e7913003 e5932000
+0xa9dcdf54:   e5923008 e3833002 e5823008 e12fff1e
+0xa9dcdf64:   e59f0054 e92d4010 e08f0000 ebfff6ad 
+
+Register to memory mapping:
+
+  r0  = 0x00000001
+0x00000001 is an unknown value
+
+  r1  = 0xa9de1090
+0xa9de1090: <offset 0x18090> in /tmp/bulldog-linux-native6860580183073049311.so at 0xa9dc9000
+
+  r2  = 0x00000000
+0x00000000 is an unknown value
+
+  r3  = 0xa9de1238
+0xa9de1238: __bss_start__+0 in /tmp/bulldog-linux-native6860580183073049311.so at 0xa9dc9000
+
+  r4  = 0xb417ec40
+0xb417ec40 is at code_begin+0 in 
+[CodeBlob (0xb417ec08)]
+Framesize: 0
+BufferBlob (0xb417ec08) used for native signature handlers
+
+  r5  = 0xa9dcfa94
+0xa9dcfa94: Java_io_silverspoon_bulldog_beagleboneblack_jni_NativeGpio_enableGpio+0 in /tmp/bulldog-linux-native6860580183073049311.so at 0xa9dc9000
+
+  r6  = 0x00000000
+0x00000000 is an unknown value
+
+  r7  = 0x00000000
+0x00000000 is an unknown value
+
+  r8  = 0xb637c674
+0xb637c674 is pointing into the stack for thread: 0xb62068c0
+
+  r9  = 0xac43e410
+{method} {0xac43e410} 'enableGpio' '()V' in 'io/silverspoon/bulldog/beagleboneblack/jni/NativeGpio'
+
+  r10 = 0xb62068c0
+0xb62068c0 is a thread
+
+  fp  = 0xb637c66c
+0xb637c66c is pointing into the stack for thread: 0xb62068c0
+
+  r12 = 0xa9dcdefc
+0xa9dcdefc: BBBIO_sys_Enable_GPIO+0 in /tmp/bulldog-linux-native6860580183073049311.so at 0xa9dc9000
+
+  sp  = 0xb637c5f0
+0xb637c5f0 is pointing into the stack for thread: 0xb62068c0
+
+  lr  = 0xa9dcfaa0
+0xa9dcfaa0: Java_io_silverspoon_bulldog_beagleboneblack_jni_NativeGpio_enableGpio+0xc in /tmp/bulldog-linux-native6860580183073049311.so at 0xa9dc9000
+
+  pc  = 0xa9dcdf54
+0xa9dcdf54: BBBIO_sys_Enable_GPIO+0x58 in /tmp/bulldog-linux-native6860580183073049311.so at 0xa9dc9000
+
+
+
+Stack: [0xb632e000,0xb637e000],  sp=0xb637c5f0,  free space=313k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [bulldog-linux-native6860580183073049311.so+0x4f54]  BBBIO_sys_Enable_GPIO+0x58
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  io.silverspoon.bulldog.beagleboneblack.jni.NativeGpio.enableGpio()V+0
+j  io.silverspoon.bulldog.beagleboneblack.jni.NativeGpio.initialize()V+11
+j  io.silverspoon.bulldog.beagleboneblack.jni.NativeGpio.<clinit>()V+4
+v  ~StubRoutines::call_stub
+j  io.silverspoon.bulldog.beagleboneblack.gpio.BBBDigitalOutput.setupImpl()V+17
+j  io.silverspoon.bulldog.core.pin.AbstractPinFeature.setup()V+1
+j  io.silverspoon.bulldog.core.gpio.base.DigitalIOFeature.setupOutputIfNecessary()V+37
+j  io.silverspoon.bulldog.core.gpio.base.DigitalIOFeature.high()V+1
+j  core.Main.main([Ljava/lang/String;)V+59
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0xb6281de0 JavaThread "Service Thread" daemon [_thread_blocked, id=1907, stack(0xaba95000,0xabae5000)]
+  0xb627ed58 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=1906, stack(0xabae5000,0xabb65000)]
+  0xb627d880 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=1905, stack(0xabe0f000,0xabe5f000)]
+  0xb6263a80 JavaThread "Finalizer" daemon [_thread_blocked, id=1904, stack(0xabe5f000,0xabeaf000)]
+  0xb62610e8 JavaThread "Reference Handler" daemon [_thread_blocked, id=1903, stack(0xabeaf000,0xabeff000)]
+=>0xb62068c0 JavaThread "main" [_thread_in_native, id=1901, stack(0xb632e000,0xb637e000)]
+
+Other Threads:
+  0xb625cc68 VMThread [stack: 0xabeff000,0xabf7f000] [id=1902]
+  0xb6283968 WatcherThread [stack: 0xaba15000,0xaba95000] [id=1908]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ def new generation   total 2432K, used 817K [0xac600000, 0xac8a0000, 0xaeea0000)
+  eden space 2176K,  25% used [0xac600000, 0xac68c480, 0xac820000)
+  from space 256K, 100% used [0xac860000, 0xac8a0000, 0xac8a0000)
+  to   space 256K,   0% used [0xac820000, 0xac820000, 0xac860000)
+ tenured generation   total 5504K, used 531K [0xaeea0000, 0xaf400000, 0xb4000000)
+   the space 5504K,   9% used [0xaeea0000, 0xaef24f70, 0xaef25000, 0xaf400000)
+ Metaspace       used 2581K, capacity 2632K, committed 2712K, reserved 4400K
+
+Card table byte_map: [0xb4083000,0xb40c1000] byte_map_base: 0xb3b20000
+
+Polling page: 0xb6f69000
+
+CodeCache: size=32768Kb used=723Kb max_used=723Kb free=32044Kb
+ bounds [0xb4141000, 0xb41f9000, 0xb6141000]
+ total_blobs=213 nmethods=62 adapters=83
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 1.925 Thread 0xb627ed58   58             java.lang.ThreadLocal::access$400 (5 bytes)
+Event: 1.926 Thread 0xb627ed58 nmethod 58 0xb41f5388 code [0xb41f5460, 0xb41f54d8]
+Event: 1.928 Thread 0xb627ed58   59             java.lang.ThreadLocal::get (38 bytes)
+Event: 1.930 Thread 0xb627ed58 nmethod 59 0xb41f5548 code [0xb41f5650, 0xb41f575c]
+Event: 1.930 Thread 0xb627ed58   60             java.lang.ThreadLocal$ThreadLocalMap::access$000 (6 bytes)
+Event: 1.931 Thread 0xb627ed58 nmethod 60 0xb41f5888 code [0xb41f5970, 0xb41f5a04]
+Event: 1.931 Thread 0xb627ed58   61             java.lang.ThreadLocal$ThreadLocalMap::getEntry (42 bytes)
+Event: 1.938 Thread 0xb627ed58 nmethod 61 0xb41f5a88 code [0xb41f5b80, 0xb41f5c84]
+Event: 1.939 Thread 0xb627ed58   62             java.lang.System::getSecurityManager (4 bytes)
+Event: 1.939 Thread 0xb627ed58 nmethod 62 0xb41f5d88 code [0xb41f5e70, 0xb41f5ef8]
+
+GC Heap History (2 events):
+Event: 1.657 GC heap before
+{Heap before GC invocations=0 (full 0):
+ def new generation   total 2432K, used 2176K [0xac600000, 0xac8a0000, 0xaeea0000)
+  eden space 2176K, 100% used [0xac600000, 0xac820000, 0xac820000)
+  from space 256K,   0% used [0xac820000, 0xac820000, 0xac860000)
+  to   space 256K,   0% used [0xac860000, 0xac860000, 0xac8a0000)
+ tenured generation   total 5504K, used 0K [0xaeea0000, 0xaf400000, 0xb4000000)
+   the space 5504K,   0% used [0xaeea0000, 0xaeea0000, 0xaeea0200, 0xaf400000)
+ Metaspace       used 2528K, capacity 2568K, committed 2584K, reserved 4400K
+Event: 1.678 GC heap after
+Heap after GC invocations=1 (full 0):
+ def new generation   total 2432K, used 256K [0xac600000, 0xac8a0000, 0xaeea0000)
+  eden space 2176K,   0% used [0xac600000, 0xac600000, 0xac820000)
+  from space 256K, 100% used [0xac860000, 0xac8a0000, 0xac8a0000)
+  to   space 256K,   0% used [0xac820000, 0xac820000, 0xac860000)
+ tenured generation   total 5504K, used 531K [0xaeea0000, 0xaf400000, 0xb4000000)
+   the space 5504K,   9% used [0xaeea0000, 0xaef24f70, 0xaef25000, 0xaf400000)
+ Metaspace       used 2528K, capacity 2568K, committed 2584K, reserved 4400K
+}
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 1.607 Thread 0xb62068c0 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 0> (0xac80b078) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u144/9417/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 1.630 Thread 0xb62068c0 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 0> (0xac811878) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u144/9417/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 1.721 Thread 0xb62068c0 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 0> (0xac6210f8) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u144/9417/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 1.767 Thread 0xb62068c0 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 0> (0xac637958) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u144/9417/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 1.792 Thread 0xb62068c0 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 0> (0xac641a08) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u144/9417/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 1.813 Thread 0xb62068c0 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 0> (0xac64bac8) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u144/9417/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 1.834 Thread 0xb62068c0 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 0> (0xac655b40) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u144/9417/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 1.858 Thread 0xb62068c0 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 0> (0xac65fbb0) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u144/9417/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 1.903 Thread 0xb62068c0 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 0> (0xac677220) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u144/9417/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 1.932 Thread 0xb62068c0 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 0> (0xac67d3d8) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u144/9417/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+
+Events (10 events):
+Event: 1.888 loading class io/silverspoon/bulldog/core/io/bus/spi/SpiConnection
+Event: 1.888 loading class io/silverspoon/bulldog/core/io/bus/spi/SpiConnection done
+Event: 1.893 loading class io/silverspoon/bulldog/core/io/bus/spi/SpiMode
+Event: 1.893 loading class io/silverspoon/bulldog/core/io/bus/spi/SpiMode done
+Event: 1.951 loading class io/silverspoon/bulldog/core/util/BulldogUtil
+Event: 1.951 loading class io/silverspoon/bulldog/core/util/BulldogUtil done
+Event: 1.967 loading class io/silverspoon/bulldog/beagleboneblack/jni/NativeGpio
+Event: 1.967 loading class io/silverspoon/bulldog/beagleboneblack/jni/NativeGpio done
+Event: 1.970 loading class io/silverspoon/bulldog/beagleboneblack/jni/NativeGpio$1
+Event: 1.970 loading class io/silverspoon/bulldog/beagleboneblack/jni/NativeGpio$1 done
+
+
+Dynamic libraries:
+00008000-00009000 r-xp 00000000 b3:01 258507     /usr/jdk1.8.0_144/bin/java
+00010000-00011000 rw-p 00000000 b3:01 258507     /usr/jdk1.8.0_144/bin/java
+01fcf000-0208f000 rw-p 00000000 00:00 0          [heap]
+a9c00000-a9c29000 rw-p 00000000 00:00 0 
+a9c29000-a9d00000 ---p 00000000 00:00 0 
+a9dc9000-a9dd1000 r-xp 00000000 b3:01 1631       /tmp/bulldog-linux-native6860580183073049311.so
+a9dd1000-a9de1000 ---p 00008000 b3:01 1631       /tmp/bulldog-linux-native6860580183073049311.so
+a9de1000-a9de2000 rw-p 00008000 b3:01 1631       /tmp/bulldog-linux-native6860580183073049311.so
+a9de2000-ab9e3000 rw-p 00000000 00:00 0 
+ab9e3000-ab9f6000 r-xp 00000000 b3:01 258660     /usr/jdk1.8.0_144/jre/lib/arm/libnet.so
+ab9f6000-ab9fe000 ---p 00013000 b3:01 258660     /usr/jdk1.8.0_144/jre/lib/arm/libnet.so
+ab9fe000-ab9ff000 rw-p 00013000 b3:01 258660     /usr/jdk1.8.0_144/jre/lib/arm/libnet.so
+ab9ff000-aba0d000 r-xp 00000000 b3:01 258647     /usr/jdk1.8.0_144/jre/lib/arm/libnio.so
+aba0d000-aba14000 ---p 0000e000 b3:01 258647     /usr/jdk1.8.0_144/jre/lib/arm/libnio.so
+aba14000-aba15000 rw-p 0000d000 b3:01 258647     /usr/jdk1.8.0_144/jre/lib/arm/libnio.so
+aba15000-aba16000 ---p 00000000 00:00 0 
+aba16000-aba95000 rw-p 00000000 00:00 0 
+aba95000-aba98000 ---p 00000000 00:00 0 
+aba98000-abae5000 rw-p 00000000 00:00 0 
+abae5000-abae8000 ---p 00000000 00:00 0 
+abae8000-abb65000 rw-p 00000000 00:00 0 
+abb65000-abd00000 r--p 00000000 b3:01 25749      /usr/lib/locale/locale-archive
+abd00000-abd21000 rw-p 00000000 00:00 0 
+abd21000-abe00000 ---p 00000000 00:00 0 
+abe0f000-abe12000 ---p 00000000 00:00 0 
+abe12000-abe5f000 rw-p 00000000 00:00 0 
+abe5f000-abe62000 ---p 00000000 00:00 0 
+abe62000-abeaf000 rw-p 00000000 00:00 0 
+abeaf000-abeb2000 ---p 00000000 00:00 0 
+abeb2000-abeff000 rw-p 00000000 00:00 0 
+abeff000-abf00000 ---p 00000000 00:00 0 
+abf00000-abf7f000 rw-p 00000000 00:00 0 
+abf7f000-ac159000 r--s 03d4d000 b3:01 258708     /usr/jdk1.8.0_144/jre/lib/rt.jar
+ac159000-ac45a000 rw-p 00000000 00:00 0 
+ac45a000-ac600000 ---p 00000000 00:00 0 
+ac600000-ac8a0000 rw-p 00000000 00:00 0 
+ac8a0000-aeea0000 ---p 00000000 00:00 0 
+aeea0000-af400000 rw-p 00000000 00:00 0 
+af400000-b4000000 ---p 00000000 00:00 0 
+b4006000-b400b000 r--s 0009a000 b3:01 258612     /usr/jdk1.8.0_144/jre/lib/jsse.jar
+b400b000-b405d000 rw-p 00000000 00:00 0 
+b405d000-b4083000 ---p 00000000 00:00 0 
+b4083000-b4085000 rw-p 00000000 00:00 0 
+b4085000-b4097000 ---p 00000000 00:00 0 
+b4097000-b409a000 rw-p 00000000 00:00 0 
+b409a000-b40c0000 ---p 00000000 00:00 0 
+b40c0000-b40c4000 rw-p 00000000 00:00 0 
+b40c4000-b4141000 ---p 00000000 00:00 0 
+b4141000-b41f9000 rwxp 00000000 00:00 0 
+b41f9000-b6141000 ---p 00000000 00:00 0 
+b6141000-b6158000 r-xp 00000000 b3:01 258633     /usr/jdk1.8.0_144/jre/lib/arm/libzip.so
+b6158000-b615f000 ---p 00017000 b3:01 258633     /usr/jdk1.8.0_144/jre/lib/arm/libzip.so
+b615f000-b6160000 rw-p 00016000 b3:01 258633     /usr/jdk1.8.0_144/jre/lib/arm/libzip.so
+b6160000-b6168000 rw-s 00000000 b3:01 258396     /tmp/hsperfdata_debian/1900
+b6168000-b616e000 r-xp 00000000 b3:01 14127      /lib/arm-linux-gnueabihf/libnss_files-2.24.so
+b616e000-b617e000 ---p 00006000 b3:01 14127      /lib/arm-linux-gnueabihf/libnss_files-2.24.so
+b617e000-b617f000 r--p 00006000 b3:01 14127      /lib/arm-linux-gnueabihf/libnss_files-2.24.so
+b617f000-b6180000 rw-p 00007000 b3:01 14127      /lib/arm-linux-gnueabihf/libnss_files-2.24.so
+b6180000-b6186000 rw-p 00000000 00:00 0 
+b6186000-b618d000 r-xp 00000000 b3:01 14189      /lib/arm-linux-gnueabihf/libnss_nis-2.24.so
+b618d000-b619c000 ---p 00007000 b3:01 14189      /lib/arm-linux-gnueabihf/libnss_nis-2.24.so
+b619c000-b619d000 r--p 00006000 b3:01 14189      /lib/arm-linux-gnueabihf/libnss_nis-2.24.so
+b619d000-b619e000 rw-p 00007000 b3:01 14189      /lib/arm-linux-gnueabihf/libnss_nis-2.24.so
+b619e000-b61ab000 r-xp 00000000 b3:01 14176      /lib/arm-linux-gnueabihf/libnsl-2.24.so
+b61ab000-b61ba000 ---p 0000d000 b3:01 14176      /lib/arm-linux-gnueabihf/libnsl-2.24.so
+b61ba000-b61bb000 r--p 0000c000 b3:01 14176      /lib/arm-linux-gnueabihf/libnsl-2.24.so
+b61bb000-b61bc000 rw-p 0000d000 b3:01 14176      /lib/arm-linux-gnueabihf/libnsl-2.24.so
+b61bc000-b61be000 rw-p 00000000 00:00 0 
+b61be000-b61c2000 r-xp 00000000 b3:01 14211      /lib/arm-linux-gnueabihf/libnss_compat-2.24.so
+b61c2000-b61d2000 ---p 00004000 b3:01 14211      /lib/arm-linux-gnueabihf/libnss_compat-2.24.so
+b61d2000-b61d3000 r--p 00004000 b3:01 14211      /lib/arm-linux-gnueabihf/libnss_compat-2.24.so
+b61d3000-b61d4000 rw-p 00005000 b3:01 14211      /lib/arm-linux-gnueabihf/libnss_compat-2.24.so
+b61d4000-b61f7000 r-xp 00000000 b3:01 258630     /usr/jdk1.8.0_144/jre/lib/arm/libjava.so
+b61f7000-b61ff000 ---p 00023000 b3:01 258630     /usr/jdk1.8.0_144/jre/lib/arm/libjava.so
+b61ff000-b6200000 rw-p 00023000 b3:01 258630     /usr/jdk1.8.0_144/jre/lib/arm/libjava.so
+b6200000-b62ff000 rw-p 00000000 00:00 0 
+b62ff000-b6300000 ---p 00000000 00:00 0 
+b6300000-b6306000 r--s 00025000 b3:01 258276     /home/debian/source/BBCNC/target/runmelol.jar
+b6306000-b630f000 r-xp 00000000 b3:01 258643     /usr/jdk1.8.0_144/jre/lib/arm/libverify.so
+b630f000-b6317000 ---p 00009000 b3:01 258643     /usr/jdk1.8.0_144/jre/lib/arm/libverify.so
+b6317000-b6318000 rw-p 00009000 b3:01 258643     /usr/jdk1.8.0_144/jre/lib/arm/libverify.so
+b6318000-b631d000 r-xp 00000000 b3:01 14154      /lib/arm-linux-gnueabihf/librt-2.24.so
+b631d000-b632c000 ---p 00005000 b3:01 14154      /lib/arm-linux-gnueabihf/librt-2.24.so
+b632c000-b632d000 r--p 00004000 b3:01 14154      /lib/arm-linux-gnueabihf/librt-2.24.so
+b632d000-b632e000 rw-p 00005000 b3:01 14154      /lib/arm-linux-gnueabihf/librt-2.24.so
+b632e000-b6331000 ---p 00000000 00:00 0 
+b6331000-b637e000 rw-p 00000000 00:00 0 
+b637e000-b63e5000 r-xp 00000000 b3:01 14177      /lib/arm-linux-gnueabihf/libm-2.24.so
+b63e5000-b63f4000 ---p 00067000 b3:01 14177      /lib/arm-linux-gnueabihf/libm-2.24.so
+b63f4000-b63f5000 r--p 00066000 b3:01 14177      /lib/arm-linux-gnueabihf/libm-2.24.so
+b63f5000-b63f6000 rw-p 00067000 b3:01 14177      /lib/arm-linux-gnueabihf/libm-2.24.so
+b63f6000-b6981000 r-xp 00000000 b3:01 258664     /usr/jdk1.8.0_144/jre/lib/arm/client/libjvm.so
+b6981000-b6988000 ---p 0058b000 b3:01 258664     /usr/jdk1.8.0_144/jre/lib/arm/client/libjvm.so
+b6988000-b69b4000 rw-p 0058a000 b3:01 258664     /usr/jdk1.8.0_144/jre/lib/arm/client/libjvm.so
+b69b4000-b6ddb000 rw-p 00000000 00:00 0 
+b6ddb000-b6df3000 r-xp 00000000 b3:01 14179      /lib/arm-linux-gnueabihf/libgcc_s.so.1
+b6df3000-b6e02000 ---p 00018000 b3:01 14179      /lib/arm-linux-gnueabihf/libgcc_s.so.1
+b6e02000-b6e03000 r--p 00017000 b3:01 14179      /lib/arm-linux-gnueabihf/libgcc_s.so.1
+b6e03000-b6e04000 rw-p 00018000 b3:01 14179      /lib/arm-linux-gnueabihf/libgcc_s.so.1
+b6e04000-b6edd000 r-xp 00000000 b3:01 14222      /lib/arm-linux-gnueabihf/libc-2.24.so
+b6edd000-b6eec000 ---p 000d9000 b3:01 14222      /lib/arm-linux-gnueabihf/libc-2.24.so
+b6eec000-b6eee000 r--p 000d8000 b3:01 14222      /lib/arm-linux-gnueabihf/libc-2.24.so
+b6eee000-b6eef000 rw-p 000da000 b3:01 14222      /lib/arm-linux-gnueabihf/libc-2.24.so
+b6eef000-b6ef2000 rw-p 00000000 00:00 0 
+b6ef2000-b6ef4000 r-xp 00000000 b3:01 14228      /lib/arm-linux-gnueabihf/libdl-2.24.so
+b6ef4000-b6f03000 ---p 00002000 b3:01 14228      /lib/arm-linux-gnueabihf/libdl-2.24.so
+b6f03000-b6f04000 r--p 00001000 b3:01 14228      /lib/arm-linux-gnueabihf/libdl-2.24.so
+b6f04000-b6f05000 rw-p 00002000 b3:01 14228      /lib/arm-linux-gnueabihf/libdl-2.24.so
+b6f05000-b6f19000 r-xp 00000000 b3:01 258776     /usr/jdk1.8.0_144/lib/arm/jli/libjli.so
+b6f19000-b6f21000 ---p 00014000 b3:01 258776     /usr/jdk1.8.0_144/lib/arm/jli/libjli.so
+b6f21000-b6f22000 rw-p 00014000 b3:01 258776     /usr/jdk1.8.0_144/lib/arm/jli/libjli.so
+b6f22000-b6f33000 r-xp 00000000 b3:01 14185      /lib/arm-linux-gnueabihf/libpthread-2.24.so
+b6f33000-b6f42000 ---p 00011000 b3:01 14185      /lib/arm-linux-gnueabihf/libpthread-2.24.so
+b6f42000-b6f43000 r--p 00010000 b3:01 14185      /lib/arm-linux-gnueabihf/libpthread-2.24.so
+b6f43000-b6f44000 rw-p 00011000 b3:01 14185      /lib/arm-linux-gnueabihf/libpthread-2.24.so
+b6f44000-b6f46000 rw-p 00000000 00:00 0 
+b6f46000-b6f5e000 r-xp 00000000 b3:01 14159      /lib/arm-linux-gnueabihf/ld-2.24.so
+b6f62000-b6f64000 rw-p 00000000 00:00 0 
+b6f67000-b6f69000 r--p 00199000 b3:01 25749      /usr/lib/locale/locale-archive
+b6f69000-b6f6a000 r--p 00000000 00:00 0 
+b6f6a000-b6f6d000 rw-p 00000000 00:00 0 
+b6f6d000-b6f6e000 r--p 00017000 b3:01 14159      /lib/arm-linux-gnueabihf/ld-2.24.so
+b6f6e000-b6f6f000 rw-p 00018000 b3:01 14159      /lib/arm-linux-gnueabihf/ld-2.24.so
+bea3e000-bea5f000 rw-p 00000000 00:00 0          [stack]
+beb69000-beb6a000 r-xp 00000000 00:00 0          [sigpage]
+beb6a000-beb6b000 r--p 00000000 00:00 0          [vvar]
+beb6b000-beb6c000 r-xp 00000000 00:00 0          [vdso]
+ffff0000-ffff1000 r-xp 00000000 00:00 0          [vectors]
+
+VM Arguments:
+java_command: runmelol.jar
+java_class_path (initial): runmelol.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/usr/jdk1.8.0_144
+PATH=/home/debian/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:/usr/jdk1.8.0_144/bin
+SHELL=/bin/bash
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x50d2ec], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0x50d2ec], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x402e8c], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x402e8c], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x402e8c], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x402e8c], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x402ff0], sa_mask[0]=00000000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x403424], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x403424], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x403424], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x403424], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:PRETTY_NAME="Debian GNU/Linux 9 (stretch)"
+NAME="Debian GNU/Linux"
+VERSION_ID="9"
+VERSION="9 (stretch)"
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+uname:Linux 4.4.91-ti-r133 #1 SMP Tue Oct 10 05:18:08 UTC 2017 armv7l
+libc:glibc 2.24 NPTL 2.24 
+rlimit: STACK 8192k, CORE infinity, NPROC 3465, NOFILE 1048576, AS infinity
+load average:0.01 0.00 0.00
+
+/proc/meminfo:
+MemTotal:         498732 kB
+MemFree:          285624 kB
+MemAvailable:     401636 kB
+Buffers:           11224 kB
+Cached:           108048 kB
+SwapCached:            0 kB
+Active:           112272 kB
+Inactive:          69288 kB
+Active(anon):      62676 kB
+Inactive(anon):     4968 kB
+Active(file):      49596 kB
+Inactive(file):    64320 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+HighTotal:             0 kB
+HighFree:              0 kB
+LowTotal:         498732 kB
+LowFree:          285624 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                80 kB
+Writeback:             0 kB
+AnonPages:         62280 kB
+Mapped:            40052 kB
+Shmem:              5360 kB
+Slab:              21916 kB
+SReclaimable:      12836 kB
+SUnreclaim:         9080 kB
+KernelStack:        1400 kB
+PageTables:         1560 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      249364 kB
+Committed_AS:     771384 kB
+VmallocTotal:     507904 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+CmaTotal:          49152 kB
+CmaFree:           46456 kB
+
+
+CPU:total 1 (initial active 1) (ARMv7), vfp
+
+/proc/cpuinfo:
+processor	: 0
+model name	: ARMv7 Processor rev 2 (v7l)
+BogoMIPS	: 995.32
+Features	: half thumb fastmult vfp edsp thumbee neon vfpv3 tls vfpd32 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x3
+CPU part	: 0xc08
+CPU revision	: 2
+
+Hardware	: Generic AM33XX (Flattened Device Tree)
+Revision	: 0000
+Serial		: 0000000000000000
+
+
+Memory: 4k page, physical 498732k(285624k free), swap 0k(0k free)
+
+vm_info: Java HotSpot(TM) Client VM (25.144-b01) for linux-arm-vfp-hflt JRE (1.8.0_144-b01), built on Jul 21 2017 22:50:42 by "java_re" with gcc 4.7.2 20120910 (prerelease)
+
+time: Thu Oct 19 06:40:51 2017
+elapsed time: 2 seconds (0d 0h 0m 2s)
+
