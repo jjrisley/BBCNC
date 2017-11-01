@@ -23,7 +23,7 @@ class Subsystem(ABC):
 	#
 	# Constructor
 	#
-	def __init__(self, motors, sensors, PIDController, isThisSetpoint, initialSensorReading):
+	def __init__(self, motors, sensorNames, PIDController, isThisSetpoint):
 
 		self._motors = motors
 		self._sensors = sensors

@@ -41,25 +41,14 @@ try:
 
 	# Check for user in put to start running the program
 	input("Press 'Enter' to let Ein loose...")
-	sensors = Sensors()
-
-	print("Warming up sensors and serial...")
-	while sensors.getSensorReadings(2) == "" and sensors.isSerialStillWorking():
-		sensors.updateSensors()
-
-	print("Sensors warmed up. Sensor 0 reads: " + str(sensors.getSensorReadings(2)) + "...")
 
 	# Instantiate subsystems here.
-	mainDrive = Drive(Motor(12, True), sensors, PIDController(0, 0, 0, 1), False, 0)
-	steering = Steering(Motor(16, True), sensors, PIDController(0.075, 0, 0, 0.333), True, float(sensors.getSensorReadings(3)))
+	#mainDrive = Drive(Motor(12, True), sensors, PIDController(0, 0, 0, 1), False)
+	steering = Steering(Motor("P8_13", 5, 10, False), sensors, PIDController(0.075, 0, 0, 0.05), True)
 
 	while (corgi):
 
-		if (sensors.isSerialStillWorking()):
-
-			sensors.updateSensors()
-
-		mainDrive.update()
+		#mainDrive.update()
 		steering.update()
 
 

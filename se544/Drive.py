@@ -11,8 +11,8 @@ class Drive(Subsystem):
 	#
 	# Constructor
 	#
-	def __init__(self, motors, sensors, PIDController, isThisSetpoint, initialSensorReading):
-		super().__init__(motors, sensors, PIDController, isThisSetpoint, initialSensorReading)
+	def __init__(self, motors, sensorNames, PIDController, isThisSetpoint):
+		super().__init__(motors, sensorNames, PIDController, isThisSetpoint)
 		
 
 	#
