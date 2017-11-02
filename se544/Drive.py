@@ -1,8 +1,7 @@
 # Imports
 import os
-import serial
 from Subsystem import *
-from Sensors import *
+
 
 class Drive(Subsystem):
 

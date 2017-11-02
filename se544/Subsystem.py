@@ -4,12 +4,11 @@
 # @author Jarrod Risley
 
 # Imports
-import time
-import RPi.GPIO as io
-from abc import *
+from abc import ABCMeta
 
-class Subsystem(ABC):
-
+class Subsystem:
+	
+	__metaclass__ = ABCMeta
 	#
 	# Global Class Variables
 	#
@@ -26,7 +25,7 @@ class Subsystem(ABC):
 	def __init__(self, motors, sensorNames, PIDController, isThisSetpoint):
 
 		self._motors = motors
-		self._sensors = sensors
+		self._sensors = sensorNames
 		self._PIDController = PIDController
 		
 		# Grab an initial reading for the sensors.
@@ -57,18 +56,14 @@ class Subsystem(ABC):
 	# Methods
 	#
 
-	@abstractmethod
 	def update(self):
 		"""Updates the subsystem to the current conditions following a call from an ISR"""
 
-	@abstractmethod
 	def __pollSensors(self):
 		"""Polls all available sensors on this subsystem."""
 
-	@abstractmethod
 	def __pollPID(self):
 		"""Polls the PID subsystem."""
 
-	@abstractmethod
 	def haltMotors(self):
 		"""Sends an emergency stop command to the sybsystem's motors."""

@@ -4,33 +4,32 @@
 # @author Jarrod Risley
 
 # Imports
-import os
-import serial
+import os, time
 from Subsystem import *
-from MaxSerial import *
+from MaxSonar import *
 
 class Steering(Subsystem):
 
 	calibrationConstant = 2.547 # ms/deg
 	raw = 0.0
-	
 
 	#
 	# Constructor
 	#
 	def __init__(self, motors, sensorNames, PIDController, isThisSetpoint):
-		super().__init__(motors, sensorNames, PIDController, isThisSetpoint)
+		super(Steering, self).__init__(motors, sensorNames, PIDController, isThisSetpoint)
 
-		sonar1 = MaxSerial("AIN0")
+		self.sonar1 = MaxSonar(self._sensors[0])
+		self.sonar2 = MaxSonar(self._sensors[1])
 		
 		if (isThisSetpoint):
 
 			# If we are at the setpoint (i.e. middle of the track), we want to stay there.
 			print("Getting setpoint for subsystem...")
 			time.sleep(0.5)
-			setpoint = sonar1.getReading()
-			self._PIDController.setSetpoint(setpoint)
-			self._PIDController.setCurrent(setpoint)
+			self.setpoint = 0.5 * (self.sonar1.getReading() + self.sonar2.getReading())
+			self._PIDController.setSetpoint(self.setpoint)
+			self._PIDController.setCurrent(self.setpoint)
 
 	#
 	# Methods
@@ -39,22 +38,47 @@ class Steering(Subsystem):
 
 		self._Subsystem__pollPID()
 
-		print("PID output is " + str(self._output))
+		##### THIS IS WHERE YOU PUT THE PID S-CURVE STUFF ######
 
-		print("Steering duty cycle has been set to: " + str(dutyCycle))
-		self._motors.setTo(100 - ((self._output / 180) * self._motors.getDutySpan() + self._motors.getDutyMin()))
+		print("														PID output is " + str(self._output))
+		dutyCycle = ((self._output / self.setpoint) * self._motors.getDutySpan() + self._motors.getDutyMin())
+		print("                                                 Steering duty cycle has been set to: " + str(dutyCycle))
+		self._motors.setTo(dutyCycle) # If we didn't detect a hard-turn case, replace this line with the s-curve logic.
+
+		# Otherwise execute the hard turn here.
 
 
 	def _Subsystem__pollSensors(self):
 		# Sensor readings go here.
+		
+		a = self.sonar1.getReading()
+		b = self.sonar2.getReading()
 
-		lastRaw = self.raw
-		self.raw = self.sonar1.getReading()
+		if a / b >= 0.9 or a/b <= 1.1:
+			dHat = 0.5 * (self.sonar1.getReading() + self.sonar2.getReading())
+		elif a / b > 1.1:
+			print("Need to hard turn RIGHT")
+			#
+			#
+			#
+			# INCORPORATE FLAG LOGIC HERE 
+			#
+			#
+			#
+			return "Some flag thing needs to go here."
+		elif a / b < 0.9:
+			print("Need to hard turn LEFT")
+			#
+			#
+			#
+			# INCORPORATE FLAG LOGIC HERE
+			#
+			#
+			#
+			return "Some flag thing needs to go here."
+		print("Average distance to wall: " + str(dHat))
 
-		print("Max Sonar Sensor: " + self.raw)
-		reading = float(self.raw)
-
-		return reading #* self.calibrationConstant
+		return dHat
 
 
 		
@@ -64,6 +88,12 @@ class Steering(Subsystem):
 
 		sensorReading = self._Subsystem__pollSensors()
 
+
+		#
+		# Incorporate flag logic for hard turning here.
+		#
+
+		# Only go to the PID controller if we are in the case where a ~ b
 		self._PIDController.setCurrent(sensorReading)
 
 		self._output = self._PIDController.output()

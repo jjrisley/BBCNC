@@ -1,5 +1,6 @@
 # Import statements go here.
-import RPi.GPIO as io
+import Adafruit_BBIO.ADC as adc
+import Adafruit_BBIO.PWM as pwm
 import time, traceback
 from Motor import *
 from Drive import *
@@ -7,7 +8,6 @@ from Steering import *
 from PIDController import *
 
 # This needs to be here.
-io.setmode(io.BOARD)
 
 #
 # Global Script Variables
@@ -23,7 +23,7 @@ tb = "" # Traceback for any errors we encounter
 
 try:
 
-
+	adc.setup()
 	#print("Initiallizing main drive motors...")
 	#motor = Motor(18, corgi)
 
@@ -40,11 +40,11 @@ try:
 	#motor.setTo(7.5)
 
 	# Check for user in put to start running the program
-	input("Press 'Enter' to let Ein loose...")
+	raw_input("Press 'Enter' to let Ein loose...")
 
 	# Instantiate subsystems here.
 	#mainDrive = Drive(Motor(12, True), sensors, PIDController(0, 0, 0, 1), False)
-	steering = Steering(Motor("P8_13", 5, 10, False), sensors, PIDController(0.075, 0, 0, 0.05), True)
+	steering = Steering(Motor("P8_13", 5, 10, False), ["AIN0", "AIN1"], PIDController(1, 0, 0, 0.05), True)
 
 	while (corgi):
 
@@ -62,6 +62,6 @@ finally:
 
 	print(tb)
 	print("Ein is stopping...")
-	io.cleanup()
+	pwm.cleanup()
 
 # end while

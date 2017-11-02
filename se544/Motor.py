@@ -8,9 +8,9 @@ class Motor:
 	# Global Class Variables
 	#
 	__freq = 50 # Hz
-	__minDuty = 0.0
-	__maxDuty = 0.0
-	__dutySpan = 0.0
+	_minDuty = 0.0
+	_maxDuty = 0.0
+	_dutySpan = 0.0
 	ESC_NEUTRAL = 7.5
 	SERVO_NEUTRAL = 7
 
@@ -19,12 +19,12 @@ class Motor:
 	#
 	def __init__(self, pin, minDuty, maxDuty, hasESC):
 
-		self.__pin = pin
-		self.__minDuty = minDuty
-		self.__maxDuty = maxDuty
-		self.__dutySpan = maxDuty - minDuty
+		self._pin = pin
+		self._minDuty = minDuty
+		self._maxDuty = maxDuty
+		self._dutySpan = maxDuty - minDuty
 		
-		pwm.start(self.__pin, (100 - minDuty), 50)
+		pwm.start(self._pin, (100 - minDuty), 50)
 		
 
 		if (hasESC):
@@ -49,15 +49,15 @@ class Motor:
 
 		"""Sets the motor to the specified duty cycle."""
 
-		pwm.set_duty_cycle(self.__pin, dutyCycle)
+		pwm.set_duty_cycle(self._pin, dutyCycle)
 
 	# end set
 
-	def getDutySpan():
-		return self.__dutySpan
+	def getDutySpan(self):
+		return self._dutySpan
 
-	def getDutyMin():
-		return self.__dutyMin
+	def getDutyMin(self):
+		return self._minDuty
 
 	def eStop(self):
 		

@@ -26,7 +26,7 @@ class MaxSonar:
 		average = 0.0
 		
 		for z in range(10):
-			val = adc.read(self.__pin) * 1.26238
+			val = (adc.read(self.__pin) / 0.004) * 1.8 
 			average = average + val
 		
 		average = average / 10
